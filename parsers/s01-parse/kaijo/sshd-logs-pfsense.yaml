@@ -21,7 +21,7 @@ pattern_syntax:
   PF_CONNECTION_CLOSED: 'Connection closed by %{IP_WORKAROUND:src_ip} port %{NUMBER:src_port}'
 
   # Disconnect with reason
-  PF_DISCONNECT: 'Received disconnect from %{IP_WORKAROUND:src_ip} port %{NUMBER:src_port}: %{GREEDYDATA:reason}'
+  PF_DISCONNECT: 'Received disconnect from %{IP_WORKAROUND:src_ip} port %{NUMBER:src_port}:%{NUMBER:reason_code}: %{GREEDYDATA:reason}'
 
   # Permission denied
   PF_PERMISSION_DENIED: 'process_output: ssh_packet_write_poll: Connection from user %{USERNAME:user} %{IP_WORKAROUND:src_ip} port %{NUMBER:src_port}: Permission denied'
@@ -31,10 +31,6 @@ pattern_syntax:
 
   # Timeout before authentication
   PF_TIMEOUT_AUTH: 'Timeout before authentication for connection from %{IP_WORKAROUND:src_ip} to %{IP_WORKAROUND:dst_ip}, pid = %{NUMBER:pid}'
-
-  # sshguard events (ignored)
-  PF_SSHGUARD: 'sshguard\[%{NUMBER:pid}\]: %{GREEDYDATA:sshguard_msg}'
-
 
 # -------------------------------------------------------------------
 #  NODE DEFINITIONS
@@ -103,16 +99,7 @@ nodes:
         - meta: destination_ip
           expression: "evt.Parsed.dst_ip"
 
-  - grok:
-      name: "PF_SSHGUARD"
-      apply_on: message
-      statics:
-        - meta: log_type
-          value: sshguard_event
-        - meta: ignore
-          value: true
-
-
+  
 # -------------------------------------------------------------------
 #  GLOBAL METADATA
 # -------------------------------------------------------------------
