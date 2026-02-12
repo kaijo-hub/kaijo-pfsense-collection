@@ -1,0 +1,21 @@
+type: parser
+name: kaijo/sshd-logs-pfsense
+version: 0.1.2
+description: "Parse pfSense/FreeBSD sshd and sshd-session logs (complete pfSense 24.x/25.x coverage)"
+author: "kaijo"
+license: MIT
+stage: s01-parse
+
+files:
+  - parsers/s01-parse/kaijo/sshd-logs-pfsense.yaml
+
+supported_platforms:
+  - freebsd
+  - pfsense
+
+tags:
+  - ssh
+  - pfsense
+  - freebsd
+  - security
+
