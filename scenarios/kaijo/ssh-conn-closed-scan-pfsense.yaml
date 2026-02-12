@@ -1,0 +1,15 @@
+type: leaky
+name: kaijo/ssh-conn-closed-scan-pfsense
+description: "Detect repeated SSH connection closed events as possible scanning activity"
+author: kaijo
+filter: |
+  evt.Meta.log_type == 'ssh_connection_closed' &&
+  evt.Meta.source_ip != ''
+groupby: evt.Meta.source_ip
+leakspeed: 10s
+capacity: 20
+blackhole: 2m
+labels:
+  type: recon
+  service: ssh
+  remediation: false

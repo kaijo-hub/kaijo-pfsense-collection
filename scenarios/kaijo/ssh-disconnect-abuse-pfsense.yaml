@@ -1,0 +1,14 @@
+type: leaky
+name: kaijo/ssh-disconnect-abuse-pfsense
+description: "Detect repeated SSH disconnects with non-zero reason codes"
+author: kaijo
+filter: |
+  evt.Meta.log_type == 'ssh_disconnect' && evt.Meta.reason_code != '0' && evt.Meta.source_ip != ''
+groupby: evt.Meta.source_ip
+leakspeed: 10s
+capacity: 10
+blackhole: 2m
+labels:
+  type: recon
+  service: ssh
+  remediation: false

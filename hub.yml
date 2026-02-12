@@ -1,21 +1,27 @@
-type: parser
-name: kaijo/sshd-logs-pfsense
-version: 0.1.2
-description: "Parse pfSense/FreeBSD sshd and sshd-session logs (complete pfSense 24.x/25.x coverage)"
-author: "kaijo"
+type: collection
+name: kaijo/pfsense-ssh
+version: 0.1.3
+description: "pfSense SSH security collection including parser and scenarios for SSH bruteforce, recon, and intrusion detection"
+author: kaijo
 license: MIT
-stage: s01-parse
 
-files:
-  - parsers/s01-parse/kaijo/sshd-logs-pfsense.yaml
+parsers:
+  - kaijo/sshd-logs-pfsense
 
-supported_platforms:
-  - freebsd
-  - pfsense
+scenarios:
+  - kaijo/ssh-bruteforce-fast-pfsense
+  - kaijo/ssh-bruteforce-slow-pfsense
+  - kaijo/ssh-success-after-bruteforce-pfsense
+  - kaijo/ssh-connection-flood-pfsense
+  - kaijo/ssh-disconnect-abuse-pfsense
+  - kaijo/ssh-conn-closed-scan-pfsense
 
 tags:
-  - ssh
   - pfsense
+  - ssh
   - freebsd
   - security
+  - bruteforce
+  - recon
+  - intrusion
 

@@ -1,0 +1,14 @@
+type: leaky
+name: kaijo/ssh-connection-flood-pfsense
+description: "Detect excessive SSH connection attempts without authentication"
+author: kaijo
+filter: |
+  evt.Meta.log_type == 'ssh_connection_open' && evt.Meta.source_ip != ''
+groupby: evt.Meta.source_ip
+leakspeed: 5s
+capacity: 15
+blackhole: 2m
+labels:
+  type: recon
+  service: ssh
+  remediation: false

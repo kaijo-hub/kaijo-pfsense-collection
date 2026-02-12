@@ -1,14 +1,31 @@
 type: collection
 name: kaijo/pfsense-ssh
-description: "pfSense SSH security collection including the kaijo/sshd-logs-pfsense parser"
-version: "1.0.0"
-author: "kaijo"
+description: "pfSense SSH security collection including parser and scenarios for SSH bruteforce, recon, and intrusion detection"
+author: kaijo
+version: 0.1.0
+license: MIT
+
+# This collection bundles:
+# - pfSense SSH parser
+# - pfSense SSH scenarios (bruteforce, recon, intrusion)
 
 parsers:
   - kaijo/sshd-logs-pfsense
 
-scenarios: []
+scenarios:
+  - kaijo/ssh-bruteforce-fast-pfsense
+  - kaijo/ssh-bruteforce-slow-pfsense
+  - kaijo/ssh-success-after-bruteforce-pfsense
+  - kaijo/ssh-connection-flood-pfsense
+  - kaijo/ssh-disconnect-abuse-pfsense
+  - kaijo/ssh-conn-closed-scan-pfsense
 
-postoverflows: []
+tags:
+  - pfsense
+  - ssh
+  - freebsd
+  - security
+  - bruteforce
+  - recon
+  - intrusion
 
-collections: []
