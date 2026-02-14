@@ -131,29 +131,6 @@ cscli collections install ./collections/kaijo-pfsense-ssh.yaml
 
 ---
 
-## Repository Structure
-
-kaijo-pfsense-collection/
-│
-├── parsers/
-│   └── s01-parse/
-│       └── kaijo/
-│           └── sshd-logs-pfsense.yaml
-│
-├── scenarios/
-│   └── kaijo/
-│       ├── ssh-bruteforce-fast-pfsense.yaml
-│       ├── ssh-bruteforce-slow-pfsense.yaml
-│       ├── ssh-success-after-bruteforce-pfsense.yaml
-│       ├── ssh-connection-flood-pfsense.yaml
-│       ├── ssh-disconnect-abuse-pfsense.yaml
-│       └── ssh-conn-closed-scan-pfsense.yaml
-│
-└── collections/
-    └── kaijo-pfsense-ssh.yaml
-
----
-
 ## Future Extensions
 
 This repository will later include:

@@ -1,26 +1,9 @@
-type: collection
+type: repository
 name: kaijo/pfsense-ssh
-description: "pfSense SSH security collection including parser and scenarios for SSH bruteforce, recon, and intrusion detection"
+description: "pfSense SSH security collection including parser and scenarios"
 author: kaijo
 license: MIT
 
-parsers:
-  - kaijo/sshd-logs-pfsense
-
-scenarios:
-  - kaijo/ssh-bruteforce-fast-pfsense
-  - kaijo/ssh-bruteforce-slow-pfsense
-  - kaijo/ssh-success-after-bruteforce-pfsense
-  - kaijo/ssh-connection-flood-pfsense
-  - kaijo/ssh-disconnect-abuse-pfsense
-  - kaijo/ssh-conn-closed-scan-pfsense
-
-tags:
-  - pfsense
-  - ssh
-  - freebsd
-  - security
-  - bruteforce
-  - recon
-  - intrusion
+collections:
+  - kaijo/pfsense-ssh
 

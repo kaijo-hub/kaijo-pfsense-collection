@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.5 - 2026-02-14
+- Fixed collection structure for Hub compatibility
+- Updated version to 0.1.5
+- Prepared for installation testing and hubtest validation
+
+---
+
 ## 0.1.4 — 2026-02-14
 ### Added
 - Added full Hub test suite:
