@@ -110,7 +110,7 @@ These tests validate:
 
 ## Installation
 
-### local installation
+### local pfSense installation
 
 CrowdSec on pfSense/FreeBSD does not support installing collections directly from GitHub repositories. 
 Therefore, this collection must be installed locally.
@@ -120,17 +120,32 @@ Therefore, this collection must be installed locally.
   cd kaijo-pfsense-collection
 
 - Install the parser:
-  cp parsers/s01-parse/kaijo/sshd-logs-pfsense.yaml /usr/local/etc/crowdsec/parsers/s01-parse/
+  mkdir -p /usr/local/etc/crowdsec/parsers/s01-parse/custom 
+  cp parsers/s01-parse/kaijo/sshd-logs-pfsense.yaml /usr/local/etc/crowdsec/parsers/s01-parse/custom
   
 - Install the scenarios
-  cp scenarios/kaijo/*.yaml /usr/local/etc/crowdsec/scenarios/
+  mkdir -p /usr/local/etc/crowdsec/scenarios/custom
+  cp scenarios/kaijo/*.yaml /usr/local/etc/crowdsec/scenarios/custom
 
 - Install the collection file
-  cp collections/kaijo/pfsense-ssh.yaml /usr/local/etc/crowdsec/collections/
+  mkdir -p /usr/local/etc/crowdsec/collections/custom
+  cp collections/kaijo/pfsense-ssh.yaml /usr/local/etc/crowdsec/collections/custom
 
 - Restart CrowdSec
   service crowdsec.sh restart
  
+
+### verify installation
+
+- Check the parser:
+  cscli parsers list | grep kaijo/sshd-
+
+- Check the scenarios:
+  cscli scenarios list | grep kaijo/ssh-
+
+- Check the metrics:
+  cscli metrics | grep kaijo/sshd-
+
 ---
 
 ## Example pfSense SSH Logs
